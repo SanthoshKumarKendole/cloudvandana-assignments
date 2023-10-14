@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js"
+   
+</head>
+<body>
+    <div >
+        <form id="surveyform"> 
+            
+            <fieldset class="field">
+                <h2>Survey Form</h2>
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" class="input" id="firstname" required><br><br>
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" class="input" id="lastname" required><br><br>
+                </div>
+                <div>
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" class="input" id="dob" required><br><br>
+                </div>
+                <div>
+                    <label for="country" >Country :</label>
+                    <select class="input" style="width: 420px;" id="country" required>
+                        <option>------------------------------Choose Country------------------------------</option>
+                        <option>India</option>
+                        <option>Austrailia</option>
+                        <option>South Africa</option>
+                        <option>USA</option>
+                    </select><br><br>
+                </div>
+                <div>
+                    <label for="gender">Gender</label>
+                    <input type="checkbox" id="male" name="gender"><label for="male">Male</label>
+                    <input type="checkbox" id="female" nme="gender"><label for="female">Female</label>
+                    <input type="checkbox" id="Transgender" name="gender"><label for="Transgender">Transgender</label>
+                </div><br><br>
+
+                <div>
+                    <label for="profession">Profession</label>
+                    <input type="text" class="input" id="profession" required><br><br>
+                </div>
+
+                <div>
+                    <label for="email" >Email:</label>
+                    <input type="email"  class="input" id="email" required><br><br>
+                </div>
+
+                <div>
+                    <label for="mno" >Mobile No</label>
+                    <input type="tel"  class="input" id="mno" required><br><br>
+                </div>
+
+                    <button type="button" onclick="submitForm()" style="width: 415px; height: 30px; background-color: transparent; color: black; border-radius: 10px; cursor: pointer;">Submit</button><br><br>
+                
+                    <button type="button" onclick="resetForm()" style="width: 415px; height: 30px; background-color: transparent; color: black; border-radius: 10px; cursor: pointer;">Reset</button><br><br>
+            </fieldset>
+        </form>
+        </div>
+        <div id="popup" style="display: none;">
+            <h2>Survey Details</h2>
+            <p id="popupcontent"></p>
+            <button onclick="closePopUp()">Close</button>
+        </div>
+        <script>
+            function submitForm() {
+    const firstname = document.getElementById('firstname').value;
+    const lastname = document.getElementById('lastname').value;
+    const dob = document.getElementById('dob').value;
+    const country = document.getElementById('country').value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+    const profession = document.getElementById('profession').value;
+    const email = document.getElementById('email').value;
+    const mno = document.getElementById('mno').value;
+
+    if (firstname && lastname && dob && country && gender && profession && email && mno) {
+        const popupcontent = `First Name: ${firstname}<br>Last Name: ${lastname}<br>Date of Birth: ${dob}<br>Country: ${country}<br>Gender: ${gender.value}<br>Profession: ${profession}<br>Email: ${email}<br>Mobile No: ${mno}`;
+        document.getElementById("popupcontent").innerHTML = popupcontent;
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("surveyform").reset();
+        
+        alert("submitted succesffuly")
+    } else {
+        alert("Please fill all the details");
+    }
+}
+
+function resetForm() {
+    document.getElementById('surveyform').reset();
+}
+
+function closePopUp() {
+    document.getElementById('popup').style.display = "none";
+}
+        </script>
+    </body>
+    </html>
